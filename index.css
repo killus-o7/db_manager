@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url("./base.css");
+
+body {
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    --_width: 250px;
+}
+
+#right-panel {
+    width: var(--_width);
+    height: 100%;
+    margin: 0;
+}
+#right-panel div {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: calc(var(--_width) - var(--margin)*2);
+    height: calc(100% - var(--margin)*2);
+    margin: 0;
+
+    background: var(--text);
+    opacity: 5%;
+
+    border-radius: var(--border-radius);
+    z-index: 101;
+}
+
+#header {
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    width: calc(100vw - var(--_width));
+    height: 150px;
+
+    z-index: 8;
+}
+
+#code {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+
+    width: 98%;
+    height: 100px;
+    margin: var(--margin) 0;
+
+    background: var(--accent);
+    border-radius: var(--border-radius);
+}
+
+#nav {
+    display: flex;
+    gap: var(--gap);
+
+    width: 100%;
+
+    padding: 8px 16px;
+}
+
+#nav a {
+    height: 30px;
+    min-width: 30px;
+    max-width: fit-content;
+
+    padding: 15px 0 0 0;
+
+    color: var(--text);
+    text-decoration: none;
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Ubuntu', sans-serif;
+    transition: 0.5s ease;
+}
+
+#nav a:hover, #nav a:active {
+    color: var(--text);
+    font-size: 29px;
+}
+
+#header hr {
+    width: 98%;
+    height: 3px;
+    color: var(--text);
+    border: 0;
+    --_c: rgba(187, 187, 187, 0.50);
+    background: linear-gradient(to right, var(--_c), var(--w3), var(--_c));
+
+
+}

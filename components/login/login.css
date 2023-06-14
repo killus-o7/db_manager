@@ -1,0 +1,62 @@
+#login_bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 100vw;
+    height: 100vh;
+
+    content: "seks";
+    background: var(--b1);
+    opacity: 0.3;
+
+    z-index: 97;
+}
+
+#db_login form {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 60vw;
+    height: 40vh;
+
+    display: flex;
+    gap: 20px;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--b2);
+    opacity: 100%;
+
+    border-radius: 10px;
+
+    z-index: 99;
+}
+
+#db_login form input {
+    width: 80%;
+    height: 48px;
+
+    padding: 0 15px;
+
+    border: 2px var(--b4) solid;
+    border-radius: 15px;
+
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+
+}
+
+h3 {
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    color: var(--w2);
+    font-family: 'Ubuntu', sans-serif;
+}

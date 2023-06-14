@@ -1,0 +1,14 @@
+* {
+    /* colors */
+    --text: #f6f1fd;
+    --bg: #0d031b;
+    --stBtn: #4bb3e7;
+    --ndBtn: #1c073b;
+    --accent: #39fed3;
+
+    /* values */
+    --gap: 24px;
+
+    --margin: 10px;
+    --border-radius: 10px;
+}

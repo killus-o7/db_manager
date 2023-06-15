@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "components/login/login.php";
-if (isset($_SESSION["sql"]) && $_SESSION["sql"]){
+if (isset($_SESSION["sql"]) && $_SESSION["sql"])
     $sql = $_SESSION["sql"];
 ?>
 <html>
@@ -11,7 +11,8 @@ if (isset($_SESSION["sql"]) && $_SESSION["sql"]){
         <script type="text/javascript">
             let head = document.querySelector("head")
             let _ = [
-                "login"
+                "login",
+                "errors"
             ]; _.forEach(e => {
                 let link = document.createElement("link")
                 link.rel  = "stylesheet"
@@ -19,6 +20,7 @@ if (isset($_SESSION["sql"]) && $_SESSION["sql"]){
                 link.href = `components/${e}/${e}.css`
                 head.appendChild(link)
             })
+
         </script>
         <title>Database Manager</title>
     </head>
@@ -62,7 +64,3 @@ if (isset($_SESSION["sql"]) && $_SESSION["sql"]){
         </div>
     </body>
 </html>
-<?php
-}
-
-?>

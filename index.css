@@ -27,7 +27,7 @@ body {
     opacity: 5%;
 
     border-radius: var(--border-radius);
-    z-index: 101;
+    z-index: 10;
 }
 
 #header {

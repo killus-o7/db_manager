@@ -8,11 +8,11 @@
     width: 100vw;
     height: 100vh;
 
-    content: "seks";
-    background: var(--b1);
-    opacity: 0.3;
+    content: "";
+    background: black;
+    opacity: 70%;
 
-    z-index: 97;
+    z-index: 99;
 }
 
 #db_login form {
@@ -22,8 +22,8 @@
 
     transform: translate(-50%, -50%);
 
-    width: 60vw;
-    height: 40vh;
+    width: 800px;
+    height: 500px;
 
     display: flex;
     gap: 20px;
@@ -31,12 +31,12 @@
     justify-content: center;
     align-items: center;
 
-    background: var(--b2);
+    background: var(--bg);
     opacity: 100%;
 
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 
-    z-index: 99;
+    z-index: 100;
 }
 
 #db_login form input {
@@ -45,18 +45,21 @@
 
     padding: 0 15px;
 
-    border: 2px var(--b4) solid;
-    border-radius: 15px;
+    border: 0;
+    border-radius: var(--border-radius);
 
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
+}
 
+#db_login form input[type=submit]{
+    background: var(--stBtn);
 }
 
 h3 {
     font-size: 32px;
     margin: 0;
     padding: 0;
-    color: var(--w2);
+    color: var(--text);
     font-family: 'Ubuntu', sans-serif;
 }

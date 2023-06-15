@@ -1,23 +1,23 @@
 <?php
 session_start();
-require "components/login/login.php";
-if (isset($_SESSION["sql"]) && $_SESSION["sql"])
-    $sql = $_SESSION["sql"];
+$GLOBALS["notifications"] = array();
+require "./components/login/login.php";
 ?>
 <html>
     <head>
         <meta charset="utf-8" />
-        <link type="text/css" rel="stylesheet" href="index.css" />
+        <link type="text/css" rel="stylesheet" href="/index.css" />
         <script type="text/javascript">
             let head = document.querySelector("head")
             let _ = [
                 "login",
-                "errors"
+                "notifications",
+                "index"
             ]; _.forEach(e => {
                 let link = document.createElement("link")
                 link.rel  = "stylesheet"
                 link.type = "text/css"
-                link.href = `components/${e}/${e}.css`
+                link.href = `/components/${e}/${e}.css`
                 head.appendChild(link)
             })
 
@@ -26,8 +26,11 @@ if (isset($_SESSION["sql"]) && $_SESSION["sql"])
     </head>
     <body>
         <div id="right-panel">
-            <div>
-
+            <div id="right-panel-bg"></div>
+            <div id="right-panel-content">
+                <?php
+                require "./components/index/right_panel.php";
+                ?>
             </div>
         </div>
         <div id="header">
@@ -35,9 +38,9 @@ if (isset($_SESSION["sql"]) && $_SESSION["sql"])
 
             </div>
             <div id="nav">
-                <a href="./?selectCurrent=true">data view</a>
-                <a href="./">structure</a>
-                <a href="./">SQL</a>
+                <a href="?action=view">data view</a>
+                <a href="./structure">structure</a>
+                <a href="./sql">SQL</a>
 
             </div>
             <hr/>
@@ -46,21 +49,52 @@ if (isset($_SESSION["sql"]) && $_SESSION["sql"])
         <div id="main">
             <?php
             $request = $_SERVER['REQUEST_URI'];
-
-            switch ($request) {
-                case '':
-                case '/' :
+            switch ($request){
+                case "":
+                case "/" :
                     require __DIR__ . '/views/index.php';
                     break;
-                case '/select' :
+                case "view":
+                    require __DIR__ . '/views/view.php';
+                    break;
+                case "structure":
+                    require __DIR__ . '/views/structure.php';
+                    break;
+                case "insert":
+                    require __DIR__ . '/views/insert.php';
+                    break;
+                case "select":
                     require __DIR__ . '/views/select.php';
+                    break;
+                case "sql" :
+                    require __DIR__ . '/views/sql.php';
                     break;
                 default:
                     http_response_code(404);
                     require __DIR__ . '/views/404.php';
                     break;
             }
+
+            /*
+            switch ($request) {
+                case '':
+                case '/' :
+                    require __DIR__ . '/views/index.php';
+                    break;
+                case '/table' :
+                    require __DIR__ . '/views/select.php';
+                    break;
+                case '/sql' :
+                    require __DIR__ . '/views/structure.php';
+                    break;
+                default:
+                    http_response_code(404);
+                    require __DIR__ . '/views/404.php';
+                    break;
+            }
+            */
             ?>
         </div>
+    <?php require "components/notifications/notifications.php" ?>
     </body>
 </html>

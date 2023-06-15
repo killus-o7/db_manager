@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     --_width: 250px;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #right-panel {
@@ -13,21 +14,32 @@ body {
     height: 100%;
     margin: 0;
 }
-#right-panel div {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: calc(var(--_width) - var(--margin)*2);
-    height: calc(100% - var(--margin)*2);
-    margin: 0;
-
+#right-panel-bg {
     background: var(--text);
     opacity: 5%;
 
     border-radius: var(--border-radius);
     z-index: 10;
+}
+#right-panel-content {
+    border-radius: var(--border-radius);
+    z-index: 11;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+}
+#right-panel-bg, #right-panel-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: calc(var(--_width) - var(--margin)*2);
+    height: calc(100% - var(--margin)*2);
+    margin: var(--margin);
+
+    border-radius: var(--border-radius);
 }
 
 #header {
@@ -73,23 +85,20 @@ body {
     color: var(--text);
     text-decoration: none;
     text-align: center;
-    font-size: 28px;
+    font-size: 22px;
     font-family: 'Ubuntu', sans-serif;
     transition: 0.5s ease;
 }
 
 #nav a:hover, #nav a:active {
     color: var(--text);
-    font-size: 29px;
+    font-size: 23px;
+    text-decoration: underline;
 }
 
 #header hr {
     width: 98%;
-    height: 3px;
     color: var(--text);
-    border: 0;
+    border: 1px solid var(--text);
     --_c: rgba(187, 187, 187, 0.50);
-    background: linear-gradient(to right, var(--_c), var(--w3), var(--_c));
-
-
 }

@@ -7,21 +7,23 @@ body {
     padding: 0;
     --_width: 250px;
     font-family: 'Ubuntu', sans-serif;
-}
 
-#right-panel {
+    display: flex;
+}
+#left-panel {
     width: var(--_width);
     height: 100%;
     margin: 0;
+    padding: 0;
 }
-#right-panel-bg {
+#left-panel-bg {
     background: var(--text);
     opacity: 5%;
 
     border-radius: var(--border-radius);
     z-index: 10;
 }
-#right-panel-content {
+#left-panel-content {
     border-radius: var(--border-radius);
     z-index: 11;
 
@@ -30,7 +32,7 @@ body {
     align-items: center;
     text-align: center;
 }
-#right-panel-bg, #right-panel-content {
+#left-panel-bg, #left-panel-content {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,12 +44,17 @@ body {
     border-radius: var(--border-radius);
 }
 
+#right-panel {
+    width: calc(100vw - var(--_width));
+    height: auto;
+}
+
 #header {
     position: fixed;
-    right: 0;
+    right: var(--margin);
     top: 0;
 
-    width: calc(100vw - var(--_width));
+    width: calc(100vw - var(--_width) - var(--margin)*2);
     height: 150px;
 
     z-index: 8;
@@ -101,4 +108,12 @@ body {
     color: var(--text);
     border: 1px solid var(--text);
     --_c: rgba(187, 187, 187, 0.50);
+}
+
+#main {
+    padding: var(--margin);
+    width: 90%;
+    position: relative;
+    top: 180px;
+    color: var(--text);
 }

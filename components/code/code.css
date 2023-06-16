@@ -1,0 +1,14 @@
+#code input {
+    width: 95%;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 40%);
+    padding: calc(var(--margin));
+    margin: var(--margin);
+    border: 0;
+    font-size: 14px;
+}
+
+#code input[type=submit] {
+    width: 10%;
+    padding: calc(var(--margin) / 1.5);
+}

@@ -1,0 +1,14 @@
+table {
+    width: auto;
+    color: var(--text);
+    border: 1px var(--text) solid;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    text-align: center;
+    padding: var(--margin);
+}
+td, th {
+    padding: calc(var(--margin)/2) calc(var(--margin)*1.5);
+    border: 1px var(--text) solid;
+}
+

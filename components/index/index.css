@@ -1,5 +1,5 @@
 /* right panel */
-#right-panel-content a {
+#left-panel-content a {
     margin: var(--margin) 0;
     width: 95%;
     height: auto;
@@ -9,7 +9,7 @@
     opacity: 100%;
     text-decoration: none;
 }
-#right-panel-content div {
+#left-panel-content div {
     list-style-type: none;
 
     background: var(--stBtn);
@@ -22,7 +22,7 @@
     flex-flow: column;
     align-items: center;
 }
-#right-panel-content div a {
+#left-panel-content div a {
     margin: calc(var(--margin) / 3) 0;
     padding: calc(var(--margin) / 2) 0;
 
@@ -31,6 +31,6 @@
 
     border-radius: var(--border-radius);
 }
-#right-panel-content div a:hover, #right-panel-content div a:active {
+#left-panel-content div a:hover, .active {
     background: rgba(255, 255, 255, 0.3);
 }

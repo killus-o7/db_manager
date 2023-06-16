@@ -2,6 +2,9 @@
 session_start();
 $GLOBALS["notifications"] = array();
 require "./components/login/login.php";
+$sql = $GLOBALS["sql"] ?? false;
+if ($sql)
+    $_SESSION["table"] = $_GET["table"] ?? mysqli_fetch_row(mysqli_query($sql, "SHOW TABLES"))[0];
 ?>
 <html>
     <head>
@@ -12,7 +15,9 @@ require "./components/login/login.php";
             let _ = [
                 "login",
                 "notifications",
-                "index"
+                "index",
+                "code",
+                "result_table"
             ]; _.forEach(e => {
                 let link = document.createElement("link")
                 link.rel  = "stylesheet"
@@ -20,81 +25,34 @@ require "./components/login/login.php";
                 link.href = `/components/${e}/${e}.css`
                 head.appendChild(link)
             })
-
         </script>
         <title>Database Manager</title>
     </head>
     <body>
-        <div id="right-panel">
-            <div id="right-panel-bg"></div>
-            <div id="right-panel-content">
+        <div id="left-panel">
+            <div id="left-panel-bg"></div>
+            <div id="left-panel-content">
                 <?php
-                require "./components/index/right_panel.php";
+                require "./components/index/left_panel.php";
                 ?>
             </div>
         </div>
-        <div id="header">
-            <div id="code">
-
+        <div id="right-panel">
+            <div id="header">
+                <div id="nav">
+                    <a href="./content?table=<?php echo $_SESSION["table"]?>">dane</a>
+                    <a href="./structure?table=<?php echo $_SESSION["table"]?>">struktura</a>
+                    <a href="./insert?table=<?php echo $_SESSION["table"]?>">wstaw</a>
+                </div> <hr/>
+                <?php require "./components/code/code.php"; ?>
             </div>
-            <div id="nav">
-                <a href="?action=view">data view</a>
-                <a href="./structure">structure</a>
-                <a href="./sql">SQL</a>
 
+            <div id="main">
+                <?php require "./functions/router.php"?>
             </div>
-            <hr/>
         </div>
 
-        <div id="main">
-            <?php
-            $request = $_SERVER['REQUEST_URI'];
-            switch ($request){
-                case "":
-                case "/" :
-                    require __DIR__ . '/views/index.php';
-                    break;
-                case "view":
-                    require __DIR__ . '/views/view.php';
-                    break;
-                case "structure":
-                    require __DIR__ . '/views/structure.php';
-                    break;
-                case "insert":
-                    require __DIR__ . '/views/insert.php';
-                    break;
-                case "select":
-                    require __DIR__ . '/views/select.php';
-                    break;
-                case "sql" :
-                    require __DIR__ . '/views/sql.php';
-                    break;
-                default:
-                    http_response_code(404);
-                    require __DIR__ . '/views/404.php';
-                    break;
-            }
 
-            /*
-            switch ($request) {
-                case '':
-                case '/' :
-                    require __DIR__ . '/views/index.php';
-                    break;
-                case '/table' :
-                    require __DIR__ . '/views/select.php';
-                    break;
-                case '/sql' :
-                    require __DIR__ . '/views/structure.php';
-                    break;
-                default:
-                    http_response_code(404);
-                    require __DIR__ . '/views/404.php';
-                    break;
-            }
-            */
-            ?>
-        </div>
     <?php require "components/notifications/notifications.php" ?>
     </body>
 </html>
